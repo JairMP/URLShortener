@@ -9,7 +9,7 @@ from constants import DATA_BASE_URL
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATA_BASE_URL
 db = SQLAlchemy(app)
-
+from models import *  # nopep8
 
 migrate = Migrate(app, db)
 
