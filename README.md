@@ -33,7 +33,7 @@ make start
 Run Tests.
 
 ```sh
-make tests
+make test
 ```
 ## Endpoints
 

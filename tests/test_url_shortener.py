@@ -51,7 +51,7 @@ def test_get_url_http_fail(client):
     data_post = json.loads(post.data)
     url = data_post.get("short_url")
 
-    get = client.get(f'/url/shortener/?url={url}')
+    get = client.get(f'/url/shortener/?url=https://{url}')
     data_get = json.loads(get.data)
 
     assert get.status_code == 400
@@ -70,3 +70,11 @@ def test_get_not_url_fail(client):
 
     assert get.status_code == 400
     assert data_get.get('error') == "url parameter is required"
+
+
+def test_get_not_valid_url_fail(client):
+
+    get = client.get(f'/url/shortener/?url=www.google.com')
+    data_get = json.loads(get.data)
+
+    assert get.status_code == 400
