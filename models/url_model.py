@@ -1,8 +1,5 @@
 from datetime import datetime
-
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from models import db
 
 
 class Url(db.Model):
@@ -14,5 +11,5 @@ class Url(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def get_by_hashUrl(hashUrl):
+    def get_by_hashUrl(hashUrl: str):
         return Url.query.filter_by(hashUrl=hashUrl).first()

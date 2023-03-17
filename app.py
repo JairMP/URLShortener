@@ -2,18 +2,25 @@ from flask import Flask
 from flask_restful import Api
 from flask_migrate import Migrate
 from constants import DATA_BASE_URL
-from models.url_model import db
+from models import db
 from routes.urls_blueprint import url_shortener_bp
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = DATA_BASE_URL
-db.init_app(app)
 
-migrate = Migrate(app, db)
+def create_app(database=DATA_BASE_URL):
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = database
+    db.init_app(app)
 
-Api(app)
+    migrate = Migrate(app, db)
 
-app.register_blueprint(url_shortener_bp)
+    Api(app)
+
+    app.register_blueprint(url_shortener_bp)
+
+    return app
+
+
+app = create_app()
 
 if __name__ == '__main__':
     app.run(debug=True)
