@@ -1,6 +1,6 @@
 # Explain
 
-I chose the MVC design because for this simple API it works pretty well, plus it's neat, easy to read, and scalable. Use flask because it is a simple development, the simplicity of flask is perfect and python because it is a simple language that allows you to program faster and has a great community behind it.
+I choose an API Rest because for this simple API it works pretty well, plus it's neat, easy to read, and scalable. Use flask because it is a simple development, the simplicity of flask is perfect and python because it is a simple language that allows you to program faster and has a great community behind it.
 
 # Documentation
 
@@ -10,8 +10,8 @@ Setup a virtualenv and activate (On project Folder).
 
 ```sh
 pip install virtualenv
-virtualenv env
-source env/bin/activate
+virtualenv venv
+source venv/bin/activate
 ```
 
 Setup the project.
@@ -35,6 +35,15 @@ Run Tests.
 ```sh
 make test
 ```
+
+## Lint
+
+Lint Format.
+
+```sh
+make lint
+```
+
 ## Endpoints
 
 #### Make an URL shorter:

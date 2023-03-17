@@ -5,7 +5,7 @@ from models import db
 
 @pytest.fixture()
 def app():
-    app = create_app('sqlite:///')
+    app = create_app("sqlite:///")
 
     with app.app_context():
         db.create_all()

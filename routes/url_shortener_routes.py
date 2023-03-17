@@ -11,25 +11,29 @@ from validators.url_validator import UrlPayloadSchema
 
 
 class Url_Shortener(Resource):
-
     def get(self):
-        url = request.args.get('url')
+        url = request.args.get("url")
 
         if not url:
-            return Response(response=json.dumps({'error': 'url parameter is required'}), status=400)
+            return Response(
+                response=json.dumps({"error": "url parameter is required"}), status=400
+            )
 
         if HTTP in url or HTTPS in url:
-            return Response(response=json.dumps({'error': 'url cant contains http:// or https://'}), status=400)
+            return Response(
+                response=json.dumps({"error": "url cant contains http:// or https://"}),
+                status=400,
+            )
 
         if not BASE_URL in url:
-            return Response(response=json.dumps({'error': 'not valid URL'}), status=400)
+            return Response(response=json.dumps({"error": "not valid URL"}), status=400)
 
-        return to_original_url(url.replace('www.short.com/', ''))
+        return to_original_url(url.replace("www.short.com/", ""))
 
     def post(self) -> dict:
         try:
             url = UrlPayloadSchema().load(request.get_json())
         except ValidationError as err:
-            return Response(response=json.dumps({'errors': err.messages}), status=400)
+            return Response(response=json.dumps({"errors": err.messages}), status=400)
 
         return to_short_url(url)
