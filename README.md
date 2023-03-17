@@ -49,6 +49,14 @@ You most send a JSON payload with url you want to make shorter.
   "url": "www.example.com/long/url"
 }
 ```
+Response:
+
+```json
+{
+  "message": "success", 
+  "short_url": "www.short.com/g3VTbiEy6b"
+}
+```
 
 #### Get the original url:
 
@@ -57,6 +65,15 @@ GET http://127.0.0.1:5000/url/shortener/?url={shorterUrl}
 ```
 You most send a url parameter (ulr) with a valid shortUrl
 
-```json
+```sh
 www.short.com/FW663UaJMa
+```
+
+Response:
+
+```json
+{
+  "message": "success", 
+  "url": "www.facebook.com"
+}
 ```
