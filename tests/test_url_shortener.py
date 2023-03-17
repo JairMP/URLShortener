@@ -42,3 +42,31 @@ def test_get_url_not_found(client):
     data_get = json.loads(get.data)
 
     assert get.status_code == 404
+
+
+def test_get_url_http_fail(client):
+
+    post = client.post(
+        "/url/shortener/", json={"url": "www.fakesite.com/long/url"})
+    data_post = json.loads(post.data)
+    url = data_post.get("short_url")
+
+    get = client.get(f'/url/shortener/?url={url}')
+    data_get = json.loads(get.data)
+
+    assert get.status_code == 400
+    assert data_get.get('error') == "url cant contains http:// or https://"
+
+
+def test_get_not_url_fail(client):
+
+    post = client.post(
+        "/url/shortener/", json={"url": "www.fakesite.com/long/url"})
+    data_post = json.loads(post.data)
+    url = data_post.get("short_url")
+
+    get = client.get(f'/url/shortener/')
+    data_get = json.loads(get.data)
+
+    assert get.status_code == 400
+    assert data_get.get('error') == "url parameter is required"
