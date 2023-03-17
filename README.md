@@ -63,7 +63,7 @@ Response:
 ```json
 {
   "message": "success", 
-  "short_url": "www.short.com/g3VTbiEy6b"
+  "short_url": "www.short.com/7WLhWzwxQg"
 }
 ```
 
