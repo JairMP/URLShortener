@@ -1,7 +1,8 @@
 
 from flask import Blueprint
-from .url_shortener_routes import Url_Shortener
 from flask_restful import Api
+
+from routes.url_shortener_routes import Url_Shortener
 
 url_shortener_bp = Blueprint('url_shortener_bp', __name__,
                              url_prefix="/url/shortener")
