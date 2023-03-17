@@ -55,7 +55,7 @@ You most send a JSON payload with url you want to make shorter.
 
 ```json
 {
-  "url": "www.example.com/long/url"
+  "url": "www.google.com"
 }
 ```
 Response:
@@ -70,12 +70,12 @@ Response:
 #### Get the original url:
 
 ```sh
-GET http://127.0.0.1:5000/url/shortener/?url={shorterUrl}
+GET http://127.0.0.1:5000/url/shortener/?url=shorterUrl
 ```
 You most send a url parameter with a valid shortUrl
 
 ```sh
-www.short.com/FW663UaJMa
+www.short.com/7WLhWzwxQg
 ```
 
 Response:
@@ -83,6 +83,6 @@ Response:
 ```json
 {
   "message": "success", 
-  "url": "www.facebook.com"
+  "url": "www.google.com"
 }
 ```
