@@ -63,7 +63,7 @@ Response:
 ```sh
 GET http://127.0.0.1:5000/url/shortener/?url={shorterUrl}
 ```
-You most send a url parameter (ulr) with a valid shortUrl
+You most send a url parameter with a valid shortUrl
 
 ```sh
 www.short.com/FW663UaJMa
