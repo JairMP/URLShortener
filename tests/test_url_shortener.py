@@ -22,6 +22,16 @@ def test_post_url_fail(client):
     assert data.get("errors")
 
 
+def test_post_url_http_fail(client):
+
+    response = client.post(
+        "/url/shortener/", json={"url": "http://www.google.com"})
+
+    data = json.loads(response.data)
+    assert response.status_code == 400
+    assert data.get('error') == "url cant contains http:// or https://"
+
+
 def test_get_url(client):
 
     post = client.post(
